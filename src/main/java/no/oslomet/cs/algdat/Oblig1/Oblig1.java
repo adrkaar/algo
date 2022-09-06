@@ -54,9 +54,15 @@ public class Oblig1 {
                 throw new IllegalStateException("Tabell er ikke sortert stigende");
             }
         }
-        int u = 0; //Hjelpevariabel
+        int t = 0; //Teller
 
-        return u;
+        for(int i = 1; i < a.length; i++){
+            if(a[i - 1] != a[i]){   //Sjekker om plassering før er lik neste plassering
+                t++;                //Hvis ikke, så kjører teller
+            }
+        }
+
+        return t;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
