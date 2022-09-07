@@ -66,13 +66,20 @@ public class Oblig1 {
             }
         }
 
-
         return t;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
+        if(a.length == 0){
+            return 0;
+        }
+        int t = 0; //Hjelpevariabel
+
+        for(int i = 0; i < a.length; i++){
+
+        }
+        return t;
     }
 
     ///// Oppgave 4 //////////////////////////////////////
