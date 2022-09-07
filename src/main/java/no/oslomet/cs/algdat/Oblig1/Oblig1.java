@@ -80,7 +80,7 @@ public class Oblig1 {
 
         for(int i = 0; i < a.length; i++){
             boolean equal = false; //Bool for å sjekke om verdi er sann
-            for(int j = 0; j < a.length; i++){
+            for(int j = 0; j < a.length; j++){
                 if(a[i] == a[j]){
                     equal = true;
                     break;
