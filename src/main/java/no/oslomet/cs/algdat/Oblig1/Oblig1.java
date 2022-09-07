@@ -57,7 +57,7 @@ public class Oblig1 {
         int t = 1; //Teller
 
         if(a.length == 0){ //Sjekker om arrayet er tomt
-            t = 0;          //Setter variabel til 0
+            return 0;      //Setter variabel til 0
         } else {
             for(int i = 0; i < a.length - 1; i++){
                 if(a[i] != a[i + 1]){   //Sjekker om plassering før er lik neste plassering
@@ -66,13 +66,26 @@ public class Oblig1 {
             }
         }
 
-
         return t;
     }
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
+        int t = 0; //Hjelpevariabel
+
+        for(int i = 0; i < a.length; i++){
+            boolean equal = false; //Bool for å sjekke om to verdier er like
+            for(int j = 0; j < i; j++){
+                if(a[j] == a[i]){
+                    equal = true;
+                    break;
+                }
+            }
+            if(!equal){
+                t++;
+            }
+        }
+        return t;
     }
 
     ///// Oppgave 4 //////////////////////////////////////
