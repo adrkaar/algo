@@ -11,7 +11,3 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 Alene på oppgaven
 
 # Oppgavebeskrivelse
-
-I oppgave 1 så gikk vi frem ved å ...
-
-I oppgave 2 så brukte vi en ... til å ...
