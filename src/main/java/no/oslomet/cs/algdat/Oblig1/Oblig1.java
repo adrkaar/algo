@@ -79,6 +79,17 @@ public class Oblig1 {
     public static void delsortering(int[] a) {
         int v = 0; //Venstre start index
         int h = a.length - 1; //Høyre -> Siste index
+        int[] b = new int[a.length];
+
+        for(int i = 0; i < a.length; i++){
+            if(a[i] % 2 == 0){ //sjekker om tallet er oddetall
+                b[v] = a[i];
+                v++;
+            } else {
+                b[h] = a[i];
+                h--;
+            }
+        }
     }
 
     ///// Oppgave 5 //////////////////////////////////////
