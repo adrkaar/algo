@@ -90,18 +90,20 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        // throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException();
 
 
     }
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        char temp = a[a.length - 1]; //Lagrer siste element
-        for(int i = 0; i < a.length; i++){
-            a[i] = a[i + 1]; //Forskyver elementene mot høyre
+        if(a.length > 1){
+            char temp = a[a.length - 1]; //Lagrer siste element
+            for(int i = 0; i < a.length; i++){
+                a[i] = a[i + 1]; //Forskyver elementene mot høyre
+            }
+            a[0] = temp; //Setter siste element som første
         }
-        a[0] = temp; //Setter siste element som første
     }
 
     ///// Oppgave 6 //////////////////////////////////////
