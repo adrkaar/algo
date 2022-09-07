@@ -99,8 +99,8 @@ public class Oblig1 {
     public static void rotasjon(char[] a) {
         if(a.length > 1){
             char temp = a[a.length - 1]; //Lagrer siste element
-            for(int i = 0; i < a.length; i++){
-                a[i] = a[i + 1]; //Forskyver elementene mot høyre
+            for(int i = a.length - 1; i > 0; --i){
+                a[i] = a[i - 1]; //Forskyver elementene mot høyre
             }
             a[0] = temp; //Setter siste element som første
         }
