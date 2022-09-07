@@ -73,11 +73,22 @@ public class Oblig1 {
     public static int antallUlikeUsortert(int[] a) {
         if(a.length == 0){
             return 0;
+        } else if (a.length == 1) {
+            return 1;
         }
         int t = 0; //Hjelpevariabel
 
         for(int i = 0; i < a.length; i++){
-
+            boolean equal = false; //Bool for å sjekke om verdi er sann
+            for(int j = 0; j < a.length; i++){
+                if(a[i] == a[j]){
+                    equal = true;
+                    break;
+                }
+                if(!equal){
+                    t++;
+                }
+            }
         }
         return t;
     }
