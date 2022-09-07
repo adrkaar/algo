@@ -54,13 +54,18 @@ public class Oblig1 {
                 throw new IllegalStateException("Tabell er ikke sortert stigende");
             }
         }
-        int t = 0; //Teller
+        int t = 1; //Teller
 
-        for(int i = 1; i < a.length; i++){
-            if(a[i - 1] != a[i]){   //Sjekker om plassering før er lik neste plassering
-                t++;                //Hvis ikke, så kjører teller
+        if(a.length == 0){ //Sjekker om arrayet er tomt
+            t = 0;          //Setter variabel til 0
+        } else {
+            for(int i = 0; i < a.length - 1; i++){
+                if(a[i] != a[i + 1]){   //Sjekker om plassering før er lik neste plassering
+                    t++;                //Hvis ikke, så kjører teller
+                }
             }
         }
+
 
         return t;
     }
