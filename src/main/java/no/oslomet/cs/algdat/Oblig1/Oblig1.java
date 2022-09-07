@@ -77,7 +77,8 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
-        throw new UnsupportedOperationException();
+        int v = 0; //Venstre start index
+        int h = a.length - 1; //Høyre -> Siste index
     }
 
     ///// Oppgave 5 //////////////////////////////////////
