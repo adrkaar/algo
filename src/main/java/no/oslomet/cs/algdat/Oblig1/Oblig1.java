@@ -114,7 +114,9 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
+        String ut = "";
+        return ut;
     }
 
     /// 7b)
