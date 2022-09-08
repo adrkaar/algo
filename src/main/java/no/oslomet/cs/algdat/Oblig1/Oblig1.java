@@ -115,8 +115,12 @@ public class Oblig1 {
     /// 7a)
     public static String flett(String s, String t) {
         //throw new UnsupportedOperationException();
-        String ut = "";
-        return ut;
+        int min = Math.min(s.length(), t.length());
+        char[] ut = {};
+
+        for(int i = 0; i < min; i++){
+            //Annen vært tegn skal legges på her med toCharArray
+        }
     }
 
     /// 7b)
