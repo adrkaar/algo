@@ -118,9 +118,14 @@ public class Oblig1 {
         int min = Math.min(s.length(), t.length());
         char[] ut = {};
 
+        StringBuilder sb = new StringBuilder();
+
         for(int i = 0; i < min; i++){
-            //Annen vært tegn skal legges på her med toCharArray
+            ut = s.toCharArray();
+            ut = t.toCharArray();
         }
+        sb.append(ut);
+        return sb.toString();
     }
 
     /// 7b)
