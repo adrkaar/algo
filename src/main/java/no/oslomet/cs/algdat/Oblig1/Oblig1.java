@@ -127,7 +127,7 @@ public class Oblig1 {
 
         }
         while(s.length() <= i && t.length() > j){
-            ut += s.charAt(j);
+            ut += t.charAt(j);
             j++;
         }
         while(s.length() > i && t.length() <= j){
