@@ -114,23 +114,33 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        //throw new UnsupportedOperationException();
-        int min = Math.min(s.length(), t.length());
-        char[] ut = {};
 
-        StringBuilder sb = new StringBuilder();
+        String ut = "";
+        int i = 0;
+        int j = 0;
 
-        for(int i = 0; i < min; i++){
-            ut = s.toCharArray();
-            ut = t.toCharArray();
+        while(s.length() > i && t.length() > j){
+            ut += s.charAt(i);
+            ut += t.charAt(j);
+            i++;
+            j++;
+
         }
-        sb.append(ut);
-        return sb.toString();
+        while(s.length() <= i && t.length() > j){
+            ut += s.charAt(j);
+            j++;
+        }
+        while(s.length() > i && t.length() <= j){
+            ut += s.charAt(i);
+            i++;
+        }
+        return ut;
     }
 
     /// 7b)
     public static String flett(String... s) {
-        throw new UnsupportedOperationException();
+        // throw new UnsupportedOperationException();
+        return "";
     }
 
     ///// Oppgave 8 //////////////////////////////////////
