@@ -115,31 +115,34 @@ public class Oblig1 {
     /// 7a)
     public static String flett(String s, String t) {
 
-        String ut = "";
+        StringBuilder ut = new StringBuilder();
         int i = 0;
         int j = 0;
 
         while(s.length() > i && t.length() > j){
-            ut += s.charAt(i);
-            ut += t.charAt(j);
+            ut.append(s.charAt(i));
+            ut.append(t.charAt(j));
             i++;
             j++;
 
         }
         while(s.length() <= i && t.length() > j){
-            ut += t.charAt(j);
+            ut.append(t.charAt(j));
             j++;
         }
-        while(s.length() > i && t.length() <= j){
-            ut += s.charAt(i);
+        while(s.length() > i){
+            ut.append(s.charAt(i));
             i++;
         }
-        return ut;
+        return ut.toString();
     }
 
     /// 7b)
     public static String flett(String... s) {
         // throw new UnsupportedOperationException();
+        String u = "";
+
+
         return "";
     }
 
