@@ -3,6 +3,8 @@ package no.oslomet.cs.algdat.Oblig1;
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -139,11 +141,24 @@ public class Oblig1 {
 
     /// 7b)
     public static String flett(String... s) {
-        // throw new UnsupportedOperationException();
-        String u = "";
+        int maxLength = 0;
 
+        //Finner største string
+        for(int i = 0; i < s.length; i++){
+            if(s[i].length() > maxLength){
+                maxLength = s[i].length();
+            }
+        }
 
-        return "";
+        StringBuilder u = new StringBuilder();
+        for(int i = 1; maxLength >= i; i++){
+            for(int j = 0; s.length - 1 >= j; j++){
+                if(i <= s[j].length()){
+                    u.append(s[j].charAt(i - 1));
+                }
+            }
+        }
+        return u.toString();
     }
 
     ///// Oppgave 8 //////////////////////////////////////
