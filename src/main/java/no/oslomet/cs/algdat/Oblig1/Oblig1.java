@@ -3,6 +3,8 @@ package no.oslomet.cs.algdat.Oblig1;
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -114,12 +116,49 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        throw new UnsupportedOperationException();
+
+        StringBuilder ut = new StringBuilder();
+        int i = 0;
+        int j = 0;
+
+        while(s.length() > i && t.length() > j){
+            ut.append(s.charAt(i));
+            ut.append(t.charAt(j));
+            i++;
+            j++;
+
+        }
+        while(s.length() <= i && t.length() > j){
+            ut.append(t.charAt(j));
+            j++;
+        }
+        while(s.length() > i){
+            ut.append(s.charAt(i));
+            i++;
+        }
+        return ut.toString();
     }
 
     /// 7b)
     public static String flett(String... s) {
-        throw new UnsupportedOperationException();
+        int maxLength = 0;
+
+        //Finner største string
+        for(int i = 0; i < s.length; i++){
+            if(s[i].length() > maxLength){
+                maxLength = s[i].length();
+            }
+        }
+
+        StringBuilder u = new StringBuilder();
+        for(int i = 1; maxLength >= i; i++){
+            for(int j = 0; s.length - 1 >= j; j++){
+                if(i <= s[j].length()){
+                    u.append(s[j].charAt(i - 1));
+                }
+            }
+        }
+        return u.toString();
     }
 
     ///// Oppgave 8 //////////////////////////////////////
