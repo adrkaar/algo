@@ -79,8 +79,26 @@ public class Oblig1 {
     public static void delsortering(int[] a) {
         int v = 0; //Venstre start index
         int h = a.length - 1; //Høyre -> Siste index
-        int[] b = new int[a.length];
+        int l = a.length;
 
+        while (v < h){ //Hvis h er større en V
+            while(a[v] % 2 == 0 && v < h){ //Så lenge v siden har større verdi enn h og er partall
+                v++;
+            }
+            while(a[v] % 2 == 1 && v > h) { //Så lenge v siden har større verdi enn h og er oddetall
+                h--;
+            }
+
+            if(v < h){
+                bytt(a, v, h);
+                v++;
+                h--;
+            }
+        }
+
+        /*
+
+        Ikke lov med hjelpetabeller, så denne måtte fjernes
         for(int i = 0; i < a.length; i++){
             if(a[i] % 2 == 0){ //sjekker om tallet er oddetall
                 b[v] = a[i];
@@ -89,7 +107,7 @@ public class Oblig1 {
                 b[h] = a[i];
                 h--;
             }
-        }
+        } */
     }
 
     ///// Oppgave 5 //////////////////////////////////////
