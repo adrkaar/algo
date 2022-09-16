@@ -77,38 +77,74 @@ public class Oblig1 {
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
+
+        if(a.length < 1) return;
+
         int v = 0; //Venstre start index
         int h = a.length - 1; //Høyre -> Siste index
         int l = a.length;
 
-        while (v < h){ //Hvis h er større en V
-            while(a[v] % 2 == 0 && v < h){ //Så lenge v siden har større verdi enn h og er partall
-                v++;
-            }
-            while(a[v] % 2 == 1 && v > h) { //Så lenge v siden har større verdi enn h og er oddetall
-                h--;
-            }
-
-            if(v < h){
+        for(int i = 0; i < a.length; i++){
+            if(a[v] % 2 == 0){
                 bytt(a, v, h);
                 v++;
                 h--;
             }
         }
 
-        /*
-
-        Ikke lov med hjelpetabeller, så denne måtte fjernes
-        for(int i = 0; i < a.length; i++){
-            if(a[i] % 2 == 0){ //sjekker om tallet er oddetall
-                b[v] = a[i];
+        while (v <= h && h > 0){ //Hvis h er større en V
+            if(a[v] % 2 == 0 && a[h] % 2 != 0){ //Så lenge v siden har større verdi enn h og er partall
+                bytt(a, v, h);
+                v++;
+                h--;
+            } else {
+                v--;
+            }
+            if(a[v] % 2 != 0){
                 v++;
             } else {
-                b[h] = a[i];
+                v++;
                 h--;
             }
-        } */
+        }
+        quicksort0(a, 0, h);
+        quicksort(a, v, l);
+
     }
+
+    private static int parter(int[] a, int v, int h, int skilleverdi)
+    {
+        while (true)
+        {
+            while (v <= h && a[v] < skilleverdi) v++;
+            while (v <= h && a[h] >= skilleverdi) h--;
+
+            if (v < h) bytt(a, v++,h--);
+            else  return v;
+        }
+    }
+
+    private static int sParter(int[] a, int v, int h, int index)
+    {
+        bytt(a, index, h);
+        int pos = parter(a, v, h - 1, a[h]);
+        bytt(a, pos, h);
+        return pos;
+    }
+
+    private static void quicksort0(int[] a, int v, int h)
+    {
+        if (v >= h) return;
+        int k = sParter(a, v, h, (v + h)/2);
+        quicksort0(a, v, k - 1);
+        quicksort0(a, k + 1, h);
+    }
+
+    public static void quicksort(int[] a, int fra, int til) // a[fra:til>
+    {
+        quicksort0(a, fra, til - 1);
+    }
+
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
