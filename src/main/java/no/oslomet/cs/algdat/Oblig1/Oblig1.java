@@ -84,21 +84,21 @@ public class Oblig1 {
         int h = a.length - 1; //Høyre -> Siste index
         int l = a.length;
 
+        /*
         for(int i = 0; i < a.length; i++){
-            if(a[v] % 2 == 0){
-                bytt(a, v, h);
+            while(a[v] % 2 == 0){
                 v++;
+            }
+            while(a[h] % 2 != 0){
                 h--;
             }
         }
 
         while (v <= h && h > 0){ //Hvis h er større en V
-            if(a[v] % 2 == 0 && a[h] % 2 != 0){ //Så lenge v siden har større verdi enn h og er partall
+            while(a[v] % 2 == 0){ //Så lenge v siden har større verdi enn h og er partall
                 bytt(a, v, h);
                 v++;
                 h--;
-            } else {
-                v--;
             }
             if(a[v] % 2 != 0){
                 v++;
@@ -107,11 +107,38 @@ public class Oblig1 {
                 h--;
             }
         }
-        quicksort0(a, 0, h);
-        quicksort(a, v, l);
+        */
 
+        for(int i = 0; i < a.length; i++){
+            while((v < l) && (a[v] % 2) != 0 ){ //Finner partall
+                v++;
+            }
+            while((h >= 0) && (a[h] % 2) == 0 ){ //Finner oddetall
+                h--;
+            }
+            while(i < a.length){
+                if (v < h){
+                    bytt(a, v, h); //Bytter om plassene
+                    v++;
+                    h--;
+                }
+                else break;
+                while((a[h] % 2) == 0) {
+                    h--;
+                }
+                while((a[v] % 2) != 0) {
+                    v++;
+                }
+
+            }
+        }
+        //Sorterer partallene og odde tallene i asc rekkefølge
+        quicksort(a, v, l);
+        quicksort(a,0, v);
     }
 
+
+    //Hjelpemetode
     private static int parter(int[] a, int v, int h, int skilleverdi)
     {
         while (true)
@@ -124,6 +151,7 @@ public class Oblig1 {
         }
     }
 
+    //Hjelpemetoder hentet fra kompendiet
     private static int sParter(int[] a, int v, int h, int index)
     {
         bytt(a, index, h);
