@@ -3,8 +3,6 @@ package no.oslomet.cs.algdat.Oblig1;
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
 import java.lang.UnsupportedOperationException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oblig1 {
@@ -15,15 +13,15 @@ public class Oblig1 {
 
         if(a.length < 1) throw new NoSuchElementException("Tabellen er tom");
 
-        int m = 0;
+        int m = 0; //Hjelpevariabel maks
 
-        for(int i = 1; i < a.length; i++){
-            if(a[m] > a[i]){
-                bytt(a, i, m);
+        for(int i = 1; i < a.length; i++){ //Starter på index en, og går gjennom tabellen
+            if(a[m] > a[i]){ //Hvis a[m] er større enn a[i]
+                bytt(a, i, m); //Hvis ja, bytter de plass
             }
             m++;
         }
-        return a[a.length - 1];
+        return a[a.length - 1]; //Returnerer den største verdien
     }
 
     //Hjelpe metode fra kompendiet
@@ -33,15 +31,14 @@ public class Oblig1 {
     }
 
     public static int ombyttinger(int[] a) {
-        if(a.length < 1)
-        throw new java.util.NoSuchElementException("Tabellen er tom");
-        int m = 0;
-        int j = 0;
+        if(a.length < 1) throw new java.util.NoSuchElementException("Tabellen er tom");
+        int m = 0; //H
+        int j = 0; //Hjelpevariabel for å holde telling på ombytninger
 
-        for(int i = 1; i <a.length; i++){
-            if(a[m] > a[i]){
-                bytt(a,i,m);
-                j++;
+        for(int i = 1; i <a.length; i++){ //itererer gjennom tabellen
+            if(a[m] > a[i]){ //Hvis a[m] har større verdi enn a[i]
+                bytt(a,i,m); //Bytter plass
+                j++;         //Verdien for antall ombyttninger øker
             }
             m++;
         }
@@ -51,39 +48,39 @@ public class Oblig1 {
 
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
-        for(int i = 1; i < a.length; i++){
-            if(a[i - 1] > a[i]){
-                throw new IllegalStateException("Tabell er ikke sortert stigende");
+        for(int i = 1; i < a.length; i++){                                              //Ireterer gjennom tabellen
+            if(a[i - 1] > a[i]){                                                        //Hvis første verdi er større en neste
+                throw new IllegalStateException("Tabell er ikke sortert stigende");     //Så kastes en exception
             }
         }
-        int t = 1; //Teller
+        int t = 1; //Hjelpevariabel - teller
 
-        if(a.length == 0){ //Sjekker om arrayet er tomt
-            return 0;      //Setter variabel til 0
+        if(a.length == 0){          //Sjekker om tabellen er tom
+            return 0;              //Returnerer 0 om tabbelen har kun en verdi
         } else {
-            for(int i = 0; i < a.length - 1; i++){
-                if(a[i] != a[i + 1]){   //Sjekker om plassering før er lik neste plassering
-                    t++;                //Hvis ikke, så kjører teller
+            for(int i = 0; i < a.length - 1; i++){  //Hvis tabbel ikke er tom, itererer den gjennom tabellen
+                if(a[i] != a[i + 1]){               //Sjekker om plassering før er lik neste plassering
+                    t++;                            //Hvis de ikke er like, øker teller
                 }
             }
         }
 
-        return t;
+        return t; //Returnerer antall ulike sortert
     }
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
-        int t = 0; //Hjelpevariabel
+        int t = 0; //Hjelpevariabel - teller
 
-        for(int i = 0; i < a.length; i++){
-            boolean equal = false; //Bool for å sjekke om to verdier er like
-            for(int j = 0; j < i; j++){
-                if(a[j] == a[i]){
+        for(int i = 0; i < a.length; i++){ //iterer gjennom tabellen
+            boolean equal = false;         //Bool for å sjekke om to verdier er ulike
+            for(int j = 0; j < i; j++){    //Itererer gjennom a og i samtidig
+                if(a[j] == a[i]){          //Hvis de er like settes den bolske verdien til true og fortsetter på neste iterasjon
                     equal = true;
                     break;
                 }
             }
-            if(!equal){
+            if(!equal){                    //
                 t++;
             }
         }
@@ -95,45 +92,20 @@ public class Oblig1 {
 
         if(a.length < 1) return;
 
-        int v = 0; //Venstre start index
-        int h = a.length - 1; //Høyre -> Siste index
-        int l = a.length;
+        int v = 0;            //Starter på første verdi - venstre
+        int h = a.length - 1; //Starter på siste verdi - høyre
+        int l = a.length;     //Lengde på tabell
 
-        /*
-        for(int i = 0; i < a.length; i++){
-            while(a[v] % 2 == 0){
-                v++;
+        for(int i = 0; i < a.length; i++){      //itererer gjennom tabellen
+            while((v < l) && (a[v] % 2) != 0 ){ //Hvis indeksen for v er mindre en tabell lengden OG det er oddetall
+                v++;                            //Øker verdien for hjelpevariabel
             }
-            while(a[h] % 2 != 0){
-                h--;
+            while((h >= 0) && (a[h] % 2) == 0 ){ //Hvis indexen for h er større en eller lik 0 og a[h] er partall
+                h--;                             //Minsker verdien for H
             }
-        }
-
-        while (v <= h && h > 0){ //Hvis h er større en V
-            while(a[v] % 2 == 0){ //Så lenge v siden har større verdi enn h og er partall
-                bytt(a, v, h);
-                v++;
-                h--;
-            }
-            if(a[v] % 2 != 0){
-                v++;
-            } else {
-                v++;
-                h--;
-            }
-        }
-        */
-
-        for(int i = 0; i < a.length; i++){
-            while((v < l) && (a[v] % 2) != 0 ){ //Finner partall
-                v++;
-            }
-            while((h >= 0) && (a[h] % 2) == 0 ){ //Finner oddetall
-                h--;
-            }
-            while(i < a.length){
-                if (v < h){
-                    bytt(a, v, h); //Bytter om plassene
+            while(i < a.length){    //Bool for å sjekke om at loopen ikke kjører på siste iterasjon
+                if (v < h){         //Hvis v verdien er mindre en h
+                    bytt(a, v, h);  //Bytter om plassene på v og h
                     v++;
                     h--;
                 }
@@ -147,13 +119,13 @@ public class Oblig1 {
 
             }
         }
-        //Sorterer partallene og odde tallene i asc rekkefølge
+        //Sorterer partallene og odde tallene i stigende rekkefølge
         quicksort(a, v, l);
         quicksort(a,0, v);
     }
 
 
-    //Hjelpemetode
+    //Hjelpemetoder fra kompendiet
     private static int parter(int[] a, int v, int h, int skilleverdi)
     {
         while (true)
@@ -190,12 +162,12 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        if(a.length > 1){
-            char temp = a[a.length - 1]; //Lagrer siste element
-            for(int i = a.length - 1; i > 0; --i){
-                a[i] = a[i - 1]; //Forskyver elementene mot høyre
+        if(a.length > 1){                                   //Hvis tabellen er større enn en
+            char temp = a[a.length - 1];                    //Lagrer siste element
+            for(int i = a.length - 1; i > 0; --i){          //Itererer gjennom tabellen fra høyre til venstre
+                a[i] = a[i - 1];                            //Forskyver elementene mot høyre
             }
-            a[0] = temp; //Setter siste element som første
+            a[0] = temp;                                    //Setter siste element som første
         }
     }
 
@@ -208,31 +180,31 @@ public class Oblig1 {
     /// 7a)
     public static String flett(String s, String t) {
 
-        StringBuilder ut = new StringBuilder();
-        int i = 0;
-        int j = 0;
+        StringBuilder ut = new StringBuilder();      //Lager en stringbuilder med navn ut
+        int i = 0;                                  //Hjelpevariabel for string s
+        int j = 0;                                  //hjelpevariabel for string t
 
-        while(s.length() > i && t.length() > j){
-            ut.append(s.charAt(i));
-            ut.append(t.charAt(j));
+        while(s.length() > i && t.length() > j){     //Så lenge strengene ikke er tomme, så iterer dem gjennom
+            ut.append(s.charAt(i));                 //Legger til verdien i s[i] på ut
+            ut.append(t.charAt(j));                 //Legger til verdien i s[j] på ut
             i++;
             j++;
 
         }
-        while(s.length() <= i && t.length() > j){
-            ut.append(t.charAt(j));
+        while(s.length() <= i && t.length() > j){  //Hvis s er større eller lik i lengde  og t er større en j i lengde
+            ut.append(t.charAt(j));                //Så legges til verdiene til t[j] på ut.
             j++;
         }
-        while(s.length() > i){
-            ut.append(s.charAt(i));
+        while(s.length() > i){                      //Hvis s er større enn enn i
+            ut.append(s.charAt(i));                 //Legges s[i] på verdien ut
             i++;
         }
-        return ut.toString();
+        return ut.toString();                       //Returnerer strengen flettet
     }
 
     /// 7b)
     public static String flett(String... s) {
-        int maxLength = 0;
+        int maxLength = 0;                                      //Hjelpe verdi som lagrer den største strenger
 
         //Finner største string
         for(int i = 0; i < s.length; i++){
@@ -241,15 +213,16 @@ public class Oblig1 {
             }
         }
 
-        StringBuilder u = new StringBuilder();
-        for(int i = 1; maxLength >= i; i++){
-            for(int j = 0; s.length - 1 >= j; j++){
-                if(i <= s[j].length()){
-                    u.append(s[j].charAt(i - 1));
+        StringBuilder u = new StringBuilder();              //Lager en stringbuilder
+        //Fletter
+        for(int i = 1; maxLength >= i; i++){                //iterer så lenge j har lik eller mindre verdi enn den største strenger
+            for(int j = 0; s.length - 1 >= j; j++){         //itererer gjennom s
+                if(i <= s[j].length()){                     //Hvis i er større eller lik lengden på på plassering til s[j]
+                    u.append(s[j].charAt(i - 1));           //Så legges til verdien på i - 1.
                 }
             }
         }
-        return u.toString();
+        return u.toString();                                //Returnerer stringen
     }
 
     ///// Oppgave 8 //////////////////////////////////////
